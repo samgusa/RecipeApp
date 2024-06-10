@@ -1,5 +1,5 @@
 //
-//  DessertDetailView.swift
+//  DessertContentView.swift
 //  RecipeApp
 //
 //  Created by Sam Greenhill on 6/10/24.

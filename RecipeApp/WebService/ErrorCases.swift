@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum ErrorCases: LocalizedError {
     case invalidURL
     case invalidResponse

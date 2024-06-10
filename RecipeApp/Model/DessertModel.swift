@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct DessertModel: Codable {
+struct DessertModel: Codable, Identifiable {
+    let id = UUID()
     let mealName: String
     let mealImage: String
     let mealId: String
