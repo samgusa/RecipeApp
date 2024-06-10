@@ -14,6 +14,9 @@
 		FE7BE66B2C17A0D700FDC124 /* RecipeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7BE66A2C17A0D700FDC124 /* RecipeAppTests.swift */; };
 		FE7BE6752C17A0D700FDC124 /* RecipeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7BE6742C17A0D700FDC124 /* RecipeAppUITests.swift */; };
 		FE7BE6772C17A0D700FDC124 /* RecipeAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7BE6762C17A0D700FDC124 /* RecipeAppUITestsLaunchTests.swift */; };
+		FE7BE6882C17A15E00FDC124 /* ErrorCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7BE6872C17A15E00FDC124 /* ErrorCases.swift */; };
+		FE7BE68A2C17A17600FDC124 /* DessertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7BE6892C17A17600FDC124 /* DessertModel.swift */; };
+		FE7BE68C2C17A26000FDC124 /* DessertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7BE68B2C17A26000FDC124 /* DessertViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		FE7BE6702C17A0D700FDC124 /* RecipeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE7BE6742C17A0D700FDC124 /* RecipeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAppUITests.swift; sourceTree = "<group>"; };
 		FE7BE6762C17A0D700FDC124 /* RecipeAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FE7BE6872C17A15E00FDC124 /* ErrorCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCases.swift; sourceTree = "<group>"; };
+		FE7BE6892C17A17600FDC124 /* DessertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertModel.swift; sourceTree = "<group>"; };
+		FE7BE68B2C17A26000FDC124 /* DessertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +139,7 @@
 		FE7BE6832C17A0DF00FDC124 /* WebService */ = {
 			isa = PBXGroup;
 			children = (
+				FE7BE6872C17A15E00FDC124 /* ErrorCases.swift */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -140,6 +147,7 @@
 		FE7BE6842C17A0EF00FDC124 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FE7BE6892C17A17600FDC124 /* DessertModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -155,6 +163,7 @@
 		FE7BE6862C17A0FE00FDC124 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				FE7BE68B2C17A26000FDC124 /* DessertViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -289,7 +298,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE7BE68A2C17A17600FDC124 /* DessertModel.swift in Sources */,
+				FE7BE68C2C17A26000FDC124 /* DessertViewModel.swift in Sources */,
 				FE7BE65C2C17A0D600FDC124 /* ContentView.swift in Sources */,
+				FE7BE6882C17A15E00FDC124 /* ErrorCases.swift in Sources */,
 				FE7BE65A2C17A0D600FDC124 /* RecipeAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
