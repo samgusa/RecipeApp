@@ -94,8 +94,11 @@
 		FE7BE6582C17A0D600FDC124 /* RecipeApp */ = {
 			isa = PBXGroup;
 			children = (
+				FE7BE6862C17A0FE00FDC124 /* ViewModel */,
+				FE7BE6852C17A0FA00FDC124 /* View */,
+				FE7BE6842C17A0EF00FDC124 /* Model */,
+				FE7BE6832C17A0DF00FDC124 /* WebService */,
 				FE7BE6592C17A0D600FDC124 /* RecipeAppApp.swift */,
-				FE7BE65B2C17A0D600FDC124 /* ContentView.swift */,
 				FE7BE65D2C17A0D700FDC124 /* Assets.xcassets */,
 				FE7BE65F2C17A0D700FDC124 /* Preview Content */,
 			);
@@ -125,6 +128,35 @@
 				FE7BE6762C17A0D700FDC124 /* RecipeAppUITestsLaunchTests.swift */,
 			);
 			path = RecipeAppUITests;
+			sourceTree = "<group>";
+		};
+		FE7BE6832C17A0DF00FDC124 /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WebService;
+			sourceTree = "<group>";
+		};
+		FE7BE6842C17A0EF00FDC124 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FE7BE6852C17A0FA00FDC124 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FE7BE65B2C17A0D600FDC124 /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FE7BE6862C17A0FE00FDC124 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
