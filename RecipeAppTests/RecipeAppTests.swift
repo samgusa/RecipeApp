@@ -18,19 +18,34 @@ final class RecipeAppTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
+    // Test fetching meal data
+//    func testFetchMealData() async throws {
+//        // Arrange
+//        let expectation = expectation(description: "Fetch meal data")
+//
+//        // Act
+//        do {
+//            let meals = try await WebService.fetchMealData()
+//
+//            // Assert
+//            XCTAssertFalse(meals.isEmpty, "No meals fetched")
+//
+//            // Validate properties of fetched meals
+//            for meal in meals {
+//                XCTAssertFalse(meal.strMeal.isEmpty, "Empty meal name")
+//                XCTAssertFalse(meal.strMealThumb.isEmpty, "Empty meal image URL")
+//                XCTAssertFalse(meal.idMeal.isEmpty, "Empty meal ID")
+//            }
+//        } catch {
+//            XCTFail("Failed to fetch meal data: \(error.localizedDescription)")
+//        }
+//
+//        // Fulfill expectation
+//        expectation.fulfill()
+//
+//        // Wait for the expectation to be fulfilled
+//        await fulfillment(of: [expectation], timeout: 5) // Adjust timeout as needed
+//    }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
 
 }

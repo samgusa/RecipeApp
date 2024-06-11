@@ -1,5 +1,5 @@
 //
-//  DessertContentView.swift
+//  DessertCellView.swift
 //  RecipeApp
 //
 //  Created by Sam Greenhill on 6/10/24.
@@ -7,14 +7,13 @@
 
 import SwiftUI
 
-struct DessertContentView: View {
+struct DessertCellView: View {
 
-    let dessertModel: DessertModel
+    let mealModel: Meal
 
-    
     var body: some View {
         VStack(spacing: 0) {
-            AsyncImage(url: URL(string: dessertModel.mealImage)) { phase in
+            AsyncImage(url: URL(string: mealModel.imageUrlString)) { phase in
                 if let image = phase.image {
                     image
                         .resizable()
@@ -28,7 +27,7 @@ struct DessertContentView: View {
                         .frame(width: 100, height: 100)
                 }
             }
-            Text(dessertModel.mealName)
+            Text(mealModel.name)
                 .font(.caption)
                 .padding([.top, .bottom], 10)
         }
@@ -38,7 +37,5 @@ struct DessertContentView: View {
 }
 
 #Preview {
-    DessertContentView(dessertModel: DessertModel(mealName: "Chocolate Cake",
-                                                 mealImage: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg",
-                                                 mealId: "1"))
+    DessertCellView(mealModel: Meal(id: "1", name: "1", imageUrlString: "1"))
 }

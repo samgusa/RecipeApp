@@ -9,17 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
 
-    //Dummy Data
-    let desserts: [DessertModel] = [
-        DessertModel(mealName: "Chocolate Cake",
-                     mealImage: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg",
-                     mealId: "1"),
-        DessertModel(mealName: "Apple Pie", mealImage: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg", mealId: "2"),
-        DessertModel(mealName: "Cheesecake", mealImage: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg", mealId: "3"),
-        DessertModel(mealName: "Ice Cream", mealImage: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg", mealId: "4"),
-        DessertModel(mealName: "Brownies", mealImage: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg", mealId: "5"),
-        DessertModel(mealName: "Donuts", mealImage: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg", mealId: "6")
-    ]
+    // ViewModel
+    @ObservedObject var viewModel = MealViewModel()
 
     // Columns
     let columns = [
@@ -30,15 +21,31 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(desserts) { dessert in
-                        DessertContentView(dessertModel: dessert)
+            ZStack {
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(viewModel.meals.meals) { meal in
+                            DessertCellView(mealModel: meal)
+                        }
                     }
+                    .padding()
                 }
-                .padding()
+                .navigationTitle("Desserts")
+
+                if viewModel.isLoading {
+                    ProgressView()
+                        .scaleEffect(2.0, anchor: .center)
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .tint(.primary)
+                }
             }
-            .navigationTitle("Desserts")
+        }
+        .task {
+            await viewModel.getMeals()
+        }
+        .alert(isPresented: $viewModel.shouldShowError) {
+            return Alert(title: Text("Error!"),
+                         message: Text(viewModel.errorMessage ?? ""))
         }
     }
 }
