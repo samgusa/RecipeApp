@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DessertCellView: View {
+struct MealCellView: View {
 
     let mealModel: Meal
 
@@ -37,5 +37,5 @@ struct DessertCellView: View {
 }
 
 #Preview {
-    DessertCellView(mealModel: Meal(id: "1", name: "1", imageUrlString: "1"))
+    MealCellView(mealModel: Meal(id: "1", name: "1", imageUrlString: "1"))
 }

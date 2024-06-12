@@ -22,14 +22,17 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             ZStack {
+                Color.brown.opacity(0.4).ignoresSafeArea()
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(viewModel.meals.meals) { meal in
-                            DessertCellView(mealModel: meal)
+                            MealCellView(mealModel: meal)
                         }
+
                     }
                     .padding()
                 }
+                .listRowBackground(Color.black)
                 .navigationTitle("Desserts")
 
                 if viewModel.isLoading {
