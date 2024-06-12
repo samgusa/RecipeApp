@@ -9,12 +9,12 @@ import Foundation
 
 struct Meal: Codable, Identifiable {
     let id: String
-    let name: String
+    let mealName: String
     let imageUrlString: String
 
     enum CodingKeys: String, CodingKey {
         case id = "idMeal"
-        case name = "strMeal"
+        case mealName = "strMeal"
         case imageUrlString = "strMealThumb"
     }
 }

@@ -20,8 +20,8 @@ struct DessertInstructionView: View {
             }
             .padding(.bottom, 10)
 
-            ForEach(Array(instructions.enumerated()), id: \.offset) { index, instruction in
-                Text("\(index + 1). " + instruction)
+            ForEach(Array(instructions.addNumbersToInstructions()), id: \.self) { instruction in
+                Text(instruction)
                     .font(.headline)
                     .padding(.bottom)
             }

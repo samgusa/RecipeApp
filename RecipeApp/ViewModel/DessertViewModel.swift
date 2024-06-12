@@ -7,11 +7,11 @@
 
 import Foundation
 
-
+@MainActor
 class DessertViewModel: ObservableObject {
 
     @Published var detailedMeals: DetailedMeals = DetailedMeals(meals: [])
-    @Published var displayViewModel: DisplayViewModel = DisplayViewModel()
+    @Published var displayViewModel: DisplayModel = DisplayModel()
     @Published var isLoading = false
     @Published var shouldShowError = false
     @Published var errorMessage: String?

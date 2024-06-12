@@ -25,12 +25,16 @@ struct ContentView: View {
                 Color.brown.opacity(0.4).ignoresSafeArea()
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(viewModel.meals.meals) { meal in
-                            MealCellView(mealModel: meal)
+                        ForEach(viewModel.meals.meals.sorted { $0.mealName < $1.mealName }) { meal in
+                            NavigationLink {
+                                DessertView(mealId: meal.id)
+                            } label: {
+                                MealCellView(mealModel: meal)
+                            }
                         }
-
                     }
                     .padding()
+                    .background(Color.white.opacity(0.4))
                 }
                 .listRowBackground(Color.black)
                 .navigationTitle("Desserts")

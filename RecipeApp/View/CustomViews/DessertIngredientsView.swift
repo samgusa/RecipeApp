@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DessertIngredientsView: View {
 
-    var ingredientsArr: [TotalIngredients] = []
+    var ingredientsArr: [IngredientsModel] = []
 
     var body: some View {
         VStack(alignment: .leading) {

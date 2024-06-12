@@ -12,7 +12,7 @@ struct MealCellView: View {
     let mealModel: Meal
 
     var body: some View {
-        VStack(spacing: 0) {
+        ZStack(alignment: .bottom) {
             AsyncImage(url: URL(string: mealModel.imageUrlString)) { phase in
                 if let image = phase.image {
                     image
@@ -27,15 +27,23 @@ struct MealCellView: View {
                         .frame(width: 100, height: 100)
                 }
             }
-            Text(mealModel.name)
-                .font(.caption)
-                .padding([.top, .bottom], 10)
+            ZStack {
+                Text(mealModel.mealName)
+                    .foregroundStyle(.white)
+                    .font(.callout)
+                    .bold()
+                    .minimumScaleFactor(0.6)
+                    .padding([.top, .bottom], 10)
+                    .padding(.horizontal, 5)
+                    .frame(width: 100, height: 30)
+                    .background(Color.black.opacity(0.2))
+            }
         }
-        .background(Color.gray.opacity(0.2))
+
         .cornerRadius(10)
     }
 }
 
 #Preview {
-    MealCellView(mealModel: Meal(id: "1", name: "1", imageUrlString: "1"))
+    ContentView()
 }

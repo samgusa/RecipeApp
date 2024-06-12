@@ -48,15 +48,14 @@ final class WebService {
             guard let detailedMeal = detailedMeals.meals.first else {
                 throw ErrorCases.invalidData
             }
-
             return detailedMeal
         } catch {
             throw ErrorCases.invalidData
         }
     }
 
-    static func filterDesserts(detailedMeal: DetailedMeal) -> DisplayViewModel {
-        var dessertDisplayModel: DisplayViewModel = DisplayViewModel()
+    static func filterDesserts(detailedMeal: DetailedMeal) -> DisplayModel {
+        var dessertDisplayModel: DisplayModel = DisplayModel()
 
         let mirror = Mirror(reflecting: detailedMeal)
 
@@ -67,18 +66,18 @@ final class WebService {
                 if value != "" && value != " "
                 {
                     switch label {
-                    case "idMeal":
+                    case "mealId":
                         dessertDisplayModel.idMeal = value
-                    case "strMeal":
-                        dessertDisplayModel.strMeal = value
-                    case "strInstructions":
-                        dessertDisplayModel.strInstructions = value.split(whereSeparator: \.isNewline)
-                    case "strMealThumb":
-                        dessertDisplayModel.strMealThumb = value
+                    case "mealName":
+                        dessertDisplayModel.mealName = value
+                    case "mealInstructions":
+                        dessertDisplayModel.mealInstructions = value.split(whereSeparator: \.isNewline)
+                    case "mealImage":
+                        dessertDisplayModel.mealImage = value
                     case _ where label.contains("strIngredient"):
-                        dessertDisplayModel.strIngredients.append(value)
+                        dessertDisplayModel.mealIngredients.append(value)
                     case _ where label.contains("strMeasure"):
-                        dessertDisplayModel.strMeasure.append(value)
+                        dessertDisplayModel.mealMeasures.append(value)
                     default:
                         break
                     }
@@ -86,26 +85,28 @@ final class WebService {
             }
         }
 
-        if dessertDisplayModel.strIngredients.count == dessertDisplayModel.strMeasure.count {
-            for index in dessertDisplayModel.strIngredients.indices {
-                if let firstCharMeasure = dessertDisplayModel.strMeasure[index].first {
+        if dessertDisplayModel.mealIngredients.count == dessertDisplayModel.mealMeasures.count {
+            for index in dessertDisplayModel.mealIngredients.indices {
+
+                if let firstCharMeasure = dessertDisplayModel.mealMeasures[index].first {
+                    
                     if firstCharMeasure.isUppercase || firstCharMeasure.isNumber {
                         dessertDisplayModel
-                            .strTotalIngredients
+                            .mealTotalIngredients
                             .append(
-                                TotalIngredients(
-                                    ingredient: dessertDisplayModel.strIngredients[index],
-                                    measure: dessertDisplayModel.strMeasure[index])
+                                IngredientsModel(
+                                    ingredient: dessertDisplayModel.mealIngredients[index],
+                                    measure: dessertDisplayModel.mealMeasures[index])
                             )
                     }
                     else {
                         // For measurements that don't have numbers, swap ingredients and measurements
                         dessertDisplayModel
-                            .strTotalIngredients
+                            .mealTotalIngredients
                             .append(
-                                TotalIngredients(
-                                    ingredient: dessertDisplayModel.strMeasure[index],
-                                    measure: dessertDisplayModel.strIngredients[index])
+                                IngredientsModel(
+                                    ingredient: dessertDisplayModel.mealMeasures[index],
+                                    measure: dessertDisplayModel.mealIngredients[index])
                             )
                     }
                 }
