@@ -16,10 +16,16 @@ final class MealViewModel: ObservableObject {
     @Published var shouldShowError = false
     @Published var errorMessage: String?
 
+    private let webService: WebService
+
+    init(webService: WebService = WebService()) {
+        self.webService = webService
+    }
+
     func getMeals() async {
         isLoading = true
         do {
-            let meals = try await WebService.fetchMealData()
+            let meals = try await webService.fetchMealData()
             self.meals = meals
             self.isLoading = false
         } catch (let error) {

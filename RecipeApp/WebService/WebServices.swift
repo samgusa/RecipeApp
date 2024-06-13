@@ -9,34 +9,40 @@ import Foundation
 
 final class WebService {
 
-    private static let baseURL = "https://themealdb.com/api/json/v1/1/"
+    private let session: URLSessionProtocol
 
-    static func fetchMealData() async throws -> Meals {
-        let urlString = baseURL + "filter.php?c=Dessert"
-        guard let url = URL(string: urlString) else {
-            throw ErrorCases.invalidURL
-        }
-
-        let (data, response) = try await URLSession.shared.data(from: url)
-        guard let httpResponse = response as? HTTPURLResponse,
-              httpResponse.statusCode == 200 else {
-            throw ErrorCases.invalidResponse
-        }
-
-        do {
-            let decoder = JSONDecoder()
-            return try decoder.decode(Meals.self, from: data)
-        } catch {
-            throw ErrorCases.invalidData
-        }
+    init(session: URLSessionProtocol = URLSession.shared) {
+        self.session = session
     }
 
-    static func fetchDessertData(idMeal: String) async throws -> DetailedMeal {
-        guard let url = URL(string: "https://themealdb.com/api/json/v1/1/lookup.php?i=\(idMeal)") else {
+    private static let baseURL = "https://themealdb.com/api/json/v1/1/"
+    
+    func fetchMealData() async throws -> Meals {
+            let urlString = WebService.baseURL + "filter.php?c=Dessert"
+            guard let url = URL(string: urlString) else {
+                throw ErrorCases.invalidURL
+            }
+
+            let (data, response) = try await session.data(from: url)
+            guard let httpResponse = response as? HTTPURLResponse,
+                  httpResponse.statusCode == 200 else {
+                throw ErrorCases.invalidResponse
+            }
+
+            do {
+                let decoder = JSONDecoder()
+                return try decoder.decode(Meals.self, from: data)
+            } catch {
+                throw ErrorCases.invalidData
+            }
+        }
+
+     func fetchDessertData(idMeal: String) async throws -> DetailedMeal {
+        guard let url = URL(string: WebService.baseURL + "lookup.php?i=\(idMeal)") else {
             throw ErrorCases.invalidURL
         }
 
-        let (data, response) = try await URLSession.shared.data(from: url)
+        let (data, response) = try await session.data(from: url)
         guard let httpResponse = response as? HTTPURLResponse,
               httpResponse.statusCode == 200 else {
             throw ErrorCases.invalidResponse

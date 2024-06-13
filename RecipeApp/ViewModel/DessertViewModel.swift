@@ -16,11 +16,17 @@ class DessertViewModel: ObservableObject {
     @Published var shouldShowError = false
     @Published var errorMessage: String?
 
+    private let webService: WebService
+
+    init(webService: WebService = WebService()) {
+        self.webService = webService
+    }
+
 
     func getDessertsDetails(mealId: String) async {
         isLoading = true
         do {
-            let detailedMeal = try await WebService.fetchDessertData(idMeal: mealId)
+            let detailedMeal = try await webService.fetchDessertData(idMeal: mealId)
             let filteredDessert = WebService.filterDesserts(detailedMeal: detailedMeal)
             self.displayViewModel = filteredDessert
             self.isLoading = false
